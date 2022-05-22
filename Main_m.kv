@@ -1,0 +1,144 @@
+ScreenManager:
+    MainScreen:
+    SecondScreen:
+    ThirdScreen:
+    FourthScreen
+
+<MainScreen>:
+    name: 'main'
+
+    namee: name
+
+    MDTextField:
+        id: name
+        hint_text: "Tìm kiếm ở đây"
+        helper_text: "Ví dụ: đăng kí kết hôn"
+        helper_text_mode: "on_focus"
+        pos_hint: {'center_x':0.5, 'center_y':0.75}
+        size_hint_x :None
+        width:170
+
+    MDIconButton:
+        icon: "microphone"
+        pos_hint: {'center_x':0.85, 'center_y':0.75}
+        on_release: root.speak()
+
+    MDRectangleFlatButton:
+        text: 'Tìm kiếm'
+        pos_hint: {'center_x':0.5, 'center_y':0.65}
+        on_press: root.timkiem()
+
+    MDRectangleFlatButton:
+        text: 'Xem tất cả'
+        pos_hint: {'center_x':0.5, 'center_y':0.55}
+        on_press: root.manager.current = 'second'
+
+    MDRectangleFlatButton:
+        text: 'Xem thêm'
+        pos_hint: {'center_x':0.5, 'center_y':0.45}
+        on_press: root.manager.current = 'fourth'
+
+<SecondScreen>:
+    name: 'second'
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Danh sách'
+            left_action_items: [["arrow-left",lambda x: root.back_main()]]
+            elevation:15
+
+        ScrollView:
+            MDList:
+                OneLineListItem:
+                    id: item1
+                    text: "Nghĩa vụ quân sự"
+                    on_release: root.nvqs()
+
+                OneLineListItem:
+                    id: item2
+                    text: "Đăng ký kết hôn"
+                    on_release: root.ket_hon()
+
+                OneLineListItem:
+                    id: item3
+                    text: "Đăng ký giám hộ"
+                    on_release: root.giam_ho()
+
+                OneLineListItem:
+                    id: item4
+                    text: "Xác nhận hộ nghèo"
+                    on_release: root.ho_ngheo()
+
+                OneLineListItem:
+                    id: item5
+                    text: "Chứng thực di chúc"
+                    on_release: root.di_chuc()
+
+
+<ThirdScreen>:
+    name: 'third'
+    reply : scn3txt
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'Kết quả'
+            left_action_items: [["home",lambda x: root.back_main()]]
+            elevation:20
+        ScrollView:
+            MDLabel:
+                id: scn3txt
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                font_size: '18sp'
+                padding: 15,15
+
+<FourthScreen>:
+    name: 'fourth'
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: 'FAQ'
+            left_action_items: [["arrow-left",lambda x: root.back_main()]]
+            elevation:15
+
+        ScrollView:
+            MDList:
+                OneLineListItem:
+                    id: item1
+                    text: "Đăng ký kết hôn ở nơi tạm trú khác"
+                    on_release: root.kethon_tamtru()
+
+                OneLineListItem:
+                    id: item2
+                    text: "Kết hôn khi ba mẹ không đồng ý"
+                    on_release: root.tu_y_kethon()
+
+                OneLineListItem:
+                    id: item3
+                    text: "Thời gian được nghỉ khi kết hôn"
+                    on_release: root.thgian_nghi_kh()
+
+                OneLineListItem:
+                    id: item4
+                    text: "Hoãn nghĩa vụ quân sự"
+                    on_release: root.hoan_nvqs()
+
+                OneLineListItem:
+                    id: item5
+                    text: "Có cần công chứng di chúc"
+                    on_release: root.congchung_dichuc()
+
+                OneLineListItem:
+                    id: item5
+                    text: "Điều kiện để trở thành giám hộ"
+                    on_release: root.dk_giamho()
+
+
+
+
+
+
+
+
